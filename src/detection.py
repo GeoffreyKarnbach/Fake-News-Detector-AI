@@ -1,5 +1,8 @@
-from name_recognition import get_human_names
+#from name_recognition import get_human_names
 import math
+import tensorflow as tf
+import pickle
+import numpy as np
 
 def get_exclamation_coefficient(text):
     # In average, with training data set, (2 times more ! for fake than non fake news) but only 1 in 3 articles (fake news) had !
@@ -34,7 +37,15 @@ def get_global_coefficient(text):
     # Output
     return (non_fake_coeff,fake_coeff)
     
+def load_model():
+    model = tf.keras.models.load_model("models/model.h5")
+    with open('models/tokenizer.pickle', 'rb') as handle:
+        tokenizer = pickle.load(handle)
 
-if __name__ == "__main__":
-    text = "Hello World!"
-    print(get_global_coefficient(str(text)))    
+    return model, tokenizer
+
+def get_prediction(model, tokenizer, text):
+    data = tf.keras.preprocessing.sequence.pad_sequences(tokenizer.texts_to_sequences([text]), maxlen=20)
+    # Predict using model
+    result = model.predict(np.array(data))[0][0]
+    return result
