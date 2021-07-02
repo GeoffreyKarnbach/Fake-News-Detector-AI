@@ -43,8 +43,8 @@ def get_prediction_from_article(text):
     if non_fake_coeff > fake_coeff:
         non_fake = (non_fake_coeff/(non_fake_coeff+fake_coeff))*100/difference
         fake = (fake_coeff/(non_fake_coeff+fake_coeff))*100*difference
-        #print(f"Probability of non fake news : {non_fake/(non_fake+fake)*100} %")
-        #print(f"Probability of fake news : {fake/(non_fake+fake)*100} %")
+        print(f"Probability of non fake news : {non_fake/(non_fake+fake)*100} %")
+        print(f"Probability of fake news : {fake/(non_fake+fake)*100} %")
 
         if fake/(non_fake+fake)*100 > non_fake/(non_fake+fake)*100:
             return 0
@@ -53,8 +53,8 @@ def get_prediction_from_article(text):
     else:
         non_fake = (non_fake_coeff/(non_fake_coeff+fake_coeff))*100*difference
         fake = (fake_coeff/(non_fake_coeff+fake_coeff))*100/difference
-        #print(f"Probability of non fake news : {non_fake/(non_fake+fake)*100} %")
-        #print(f"Probability of fake news : {fake/(non_fake+fake)*100} %")
+        print(f"Probability of non fake news : {non_fake/(non_fake+fake)*100} %")
+        print(f"Probability of fake news : {fake/(non_fake+fake)*100} %")
 
         if fake/(non_fake+fake)*100 > non_fake/(non_fake+fake)*100:
             return 0
@@ -74,5 +74,5 @@ def test_run():
     print(correct)
 
 if __name__ == "__main__":
-    test_run()
-    #get_base_input()
+    #test_run()
+    get_base_input()
