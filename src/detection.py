@@ -1,4 +1,4 @@
-#from name_recognition import get_human_names
+from name_recognition import get_human_names
 import math
 import tensorflow as tf
 import pickle
@@ -31,8 +31,9 @@ def get_global_coefficient(text):
 
     # Coefficient by amount of names
     amount_names = get_human_names(text)
+
     fake_coeff += (1.2/math.exp(amount_names)+0.5)*4
-    non_fake_coeff += max((-2*((amount_names-8)**2)+30)*4,0)
+    non_fake_coeff += max((-2*((amount_names-15)**2)+150)*4,0) # Geogebra value 0 for 18
 
     # Output
     return (non_fake_coeff,fake_coeff)

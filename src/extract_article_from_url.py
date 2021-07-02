@@ -53,7 +53,8 @@ def get_text_from_url(url, output_file = "sample_input.txt"):
             if t.parent.name not in blacklist:
                 output += '{} '.format(t)
 
-
+    output = output.replace("\n","")
+    output = output.replace("  "," ")
     with open("sample_input.txt","w", encoding="utf8") as f:
         f.write(output)
 
