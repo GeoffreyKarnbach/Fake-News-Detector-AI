@@ -1,6 +1,6 @@
 # Fakenews - Detector
 
-In this project, @obrhubr and I tried to identify fake news. 
+In this project, ![@obrhubr](https://github.com/obrhubr) and I tried to identify fake news. 
 
 Before being able to use the detector, you will need to train the model. To do so:
 - Create an empty "models" folder in the root directory.
